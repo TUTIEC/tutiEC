@@ -19,32 +19,35 @@
     }
     h1 {
       color: white;
-      font-size: 36px;
+      font-size: 42px;
+      font-weight: bold;
       margin-bottom: 10px;
     }
     .subtitulo {
-      color: #cccccc;
-      font-size: 18px;
-      margin-bottom: 40px;
+      color: #ffcc00;
+      font-size: 20px;
+      margin-bottom: 50px;
     }
 
-    /* === BOTÓN SUSCRIBIRSE === */
+    /* BOTÓN PRINCIPAL */
     .boton-suscribir {
       display: inline-block;
       background: #FF0000;
       color: white;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: bold;
-      padding: 18px 50px;
+      padding: 20px 60px;
       border-radius: 50px;
       text-decoration: none;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+      border: none;
+      cursor: pointer;
       transition: all 0.3s ease;
       animation: pulsar 2s infinite;
     }
     .boton-suscribir:hover {
       transform: scale(1.08);
-      box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+      box-shadow: 0 0 35px rgba(255, 0, 0, 0.9);
     }
     @keyframes pulsar {
       0% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); }
@@ -52,13 +55,10 @@
       100% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); }
     }
 
-    /* === BOTÓN CONFIRMACIÓN === */
+    /* SECCIÓN DE CONFIRMACIÓN */
     .seccion-confirmacion {
       margin-top: 50px;
-      display: none; /* Empieza oculto */
-    }
-    .seccion-confirmacion.activo {
-      display: block;
+      display: none;
       animation: aparecer 0.8s ease;
     }
     @keyframes aparecer {
@@ -67,26 +67,29 @@
     }
     .texto-gracias {
       color: #00FF00;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: bold;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
     .boton-confirmado {
       display: inline-block;
       background: #00CC00;
       color: white;
-      font-size: 20px;
+      font-size: 22px;
       font-weight: bold;
-      padding: 15px 40px;
+      padding: 18px 50px;
       border-radius: 50px;
-      text-decoration: none;
-      box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
       border: none;
       cursor: pointer;
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
     }
     .boton-confirmado:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(0, 255, 0, 0.8);
+    }
+    .nota {
+      color: #999;
+      margin-top: 30px;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -96,32 +99,39 @@
     <h1>VIEJO TAPIAS</h1>
     <p class="subtitulo">🔥 33.2 K suscriptores — ¡Únete a la familia! 🔥</p>
 
-    <!-- BOTÓN PRINCIPAL -->
-    <a href="https://youtube.com/@viejotapias6360/subscribe" 
-       target="_blank" 
-       class="boton-suscribir"
-       id="botonSuscribir"
-       onclick="mostrarConfirmacion()">
+    <!-- BOTÓN QUE ABRE Y MUESTRA CONFIRMACIÓN -->
+    <button class="boton-suscribir" id="botonPrincipal" onclick="abrirSuscripcion()">
       ▶️ SUSCRIBIRSE AHORA
-    </a>
+    </button>
 
-    <!-- SECCIÓN QUE APARECE DESPUÉS -->
-    <div class="seccion-confirmacion" id="seccionConfirmar">
-      <p class="texto-gracias">✅ ¡GRACIAS POR SUSCRIBIRTE!</p>
-      
-      <button class="boton-confirmado" onclick="alert('🎉 ¡Bienvenido a la familia VIEJO TAPIAS! 🎉')">
+    <div class="seccion-confirmacion" id="confirmacion">
+      <p class="texto-gracias">✅ ¡GRACIAS POR APOYAR!</p>
+      <p style="color:white; margin-bottom:20px;">Presiona "Suscribirse" en la ventana de YouTube 👆</p>
+      <button class="boton-confirmado" onclick="yaSoy()">
         ✅ YA SOY SUSCRIPTOR
       </button>
     </div>
+
+    <p class="nota">Al presionar se abre YouTube para confirmar ✅</p>
   </div>
 
   <script>
-    function mostrarConfirmacion() {
-      // Espera un momento y muestra la confirmación
-      setTimeout(function() {
-        document.getElementById('seccionConfirmar').classList.add('activo');
-        document.getElementById('botonSuscribir').style.opacity = '0.5';
-      }, 800);
+    function abrirSuscripcion() {
+      // Abre YouTube en ventana pequeña
+      window.open(
+        'https://youtube.com/@viejotapias6360/subscribe',
+        'Suscripcion',
+        'width=600,height=400,top=100,left=100'
+      );
+      
+      // Muestra el mensaje de confirmación en tu página
+      document.getElementById('confirmacion').style.display = 'block';
+      document.getElementById('botonPrincipal').style.opacity = '0.4';
+      document.getElementById('botonPrincipal').disabled = true;
+    }
+
+    function yaSoy() {
+      alert('🎉 ¡Gracias por ser parte de la familia VIEJO TAPIAS! 🎉');
     }
   </script>
 
