@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💕 Para Ti</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      min-height: 100vh;
+      /* ✅ Tu imagen de fondo */
+      background: url("25.jpg") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Georgia', 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 25px;
+    }
+    .carta {
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 24px;
+      padding: 45px 35px;
+      max-width: 480px;
+      box-shadow: 0 10px 35px rgba(231, 76, 60, 0.25);
+      text-align: center;
+      animation: aparecer 1s ease;
+    }
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .corazon-grande {
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      color: #c0392b;
+      font-size: 26px;
+      margin-bottom: 30px;
+      line-height: 1.4;
+    }
+    .texto {
+      color: #444;
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+    .destacado {
+      color: #e74c3c;
+      font-weight: bold;
+      font-size: 19px;
+      margin-top: 15px;
+    }
+    .firma {
+      margin-top: 30px;
+      color: #777;
+      font-style: italic;
+    }
+    .botones {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .volver, .subir {
+      display: inline-block;
+      padding: 14px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.3s;
+      font-size: 17px;
+    }
+    .volver {
+      background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+      color: white;
+      box-shadow: 0 4px 15px rgba(127, 140, 141, 0.35);
+    }
+    .subir {
+      background: linear-gradient(135deg, #f1c40f, #f39c12);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
+    }
+    .volver:hover, .subir:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+<div class="carta">
+  <div class="corazon-grande">💕</div>
+  
+  <h1>Para ti, mi persona favorita:</h1>
+  
+  <div class="texto">
+    Dicen que uno se encuentra con su destino cuando menos lo espera… y tú llegaste así, de la nada, y lo llenaste todo de luz. 🥹✨<br><br>
+    
+    No eres solo mi pareja, eres mi refugio, mi alegría, mi paz. Contigo todo es más fácil, más bonito, más todo.<br><br>
+    
+    Gracias por cuidarme, por escucharme, por sonreírme. Gracias por existir.<br><br>
+    
+    No prometo que todo sea perfecto, pero sí te prometo que siempre voy a elegirte, a cuidarte y a amarte con todo lo que soy.
+    
+    <p class="destacado">Te quiero, hoy, mañana y siempre. 💖</p>
+  </div>
+  
+  <p class="firma">— Para ti ❤️</p>
+  
+  <div class="botones">
+    <a href="amor2.html" class="subir">🌟 SUBIR RECUERDOS 🌟</a>
+    <a href="amor.html" class="volver">← Volver a la galería</a> 
+ </div>
+</div>
+
+</body>
+</html>

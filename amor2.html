@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌟 Álbum de Recuerdos</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      min-height: 100vh;
+      background: url("fondo-amor.jpg") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 30px 20px;
+    }
+    .contenedor {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      color: #d35400;
+      font-size: 26px;
+      margin-bottom: 25px;
+      text-shadow: 0 2px 6px rgba(255,255,255,0.8);
+    }
+
+    /* === FORMULARIO === */
+    .caja-form {
+      background: rgba(255,255,255,0.95);
+      border-radius: 20px;
+      padding: 30px 25px;
+      margin-bottom: 35px;
+      box-shadow: 0 8px 25px rgba(243,156,18,0.25);
+    }
+    .area-foto {
+      border: 3px dashed #f39c12;
+      border-radius: 14px;
+      padding: 35px;
+      text-align: center;
+      cursor: pointer;
+      margin-bottom: 20px;
+      transition: all 0.3s;
+    }
+    .area-foto:hover {
+      background: #fff8e1;
+      border-color: #e67e22;
+    }
+    .icono {font-size: 40px; margin-bottom: 8px;}
+    input[type="file"] {display: none;}
+    .vista-previa {
+      margin-top: 15px;
+      display: none;
+    }
+    .vista-previa img {
+      width: 100%;
+      border-radius: 10px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+    }
+    .vista-previa.activa {display: block;}
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      color: #8b4513;
+      font-weight: 600;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #f5d0a9;
+      border-radius: 10px;
+      font-size: 15px;
+      background: #fff9f2;
+    }
+    textarea {resize: vertical; min-height: 80px;}
+
+    .btn-guardar {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      background: linear-gradient(135deg, #f1c40f, #e67e22);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(230,126,34,0.35);
+      transition: transform 0.3s;
+    }
+    .btn-guardar:hover {transform: scale(1.03);}
+
+    /* === ÁLBUM DE RECUERDOS === */
+    .titulo-album {
+      color: #c0392b;
+      font-size: 22px;
+      margin: 30px 0 20px;
+      text-align: center;
+    }
+    .recuerdo {
+      background: rgba(255,255,255,0.95);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      animation: entrada 0.5s ease;
+    }
+    @keyframes entrada {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    .recuerdo img {
+      width: 100%;
+      border-radius: 12px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+    .etiqueta {
+      font-weight: bold;
+      color: #d35400;
+      display: inline-block;
+      min-width: 70px;
+    }
+    .dato {margin-bottom: 8px; color: #444;}
+
+    .volver {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      padding: 12px 30px;
+      background: rgba(255,255,255,0.9);
+      color: #e67e22;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="contenedor">
+  <h1>🌟 Álbum de Nuestros Recuerdos 🌟</h1>
+
+  <!-- === FORMULARIO PARA AGREGAR === -->
+  <div class="caja-form">
+    <label class="area-foto" for="foto-recuerdo">
+      <div>
+        <div class="icono">📸</div>
+        <div style="color: #e67e22; font-weight: bold;">Toca para elegir la foto</div>
+      </div>
+      <input type="file" id="foto-recuerdo" accept="image/*" onchange="verFoto(this)">
+    </label>
+
+    <div class="vista-previa" id="vista-previa">
+      <p style="color: #27ae60; font-weight: bold; margin-bottom: 10px;">✅ Foto lista</p>
+      <img id="img-preview" alt="Vista previa">
+    </div>
+
+    <label>📅 Fecha</label>
+    <input type="date" id="fecha">
+
+    <label>📍 Lugar</label>
+    <input type="text" id="lugar" placeholder="¿Dónde fue?">
+
+    <label>💌 Descripción del recuerdo</label>
+    <textarea id="descripcion" placeholder="Escribe lo que significa para ti..."></textarea>
+
+    <button class="btn-guardar" onclick="agregarRecuerdo()">💖 Guardar en el Álbum 💖</button>
+  </div>
+
+  <!-- === ÁLBUM DONDE SE MUESTRAN === -->
+  <h2 class="titulo-album">💝 Nuestros Recuerdos 💝</h2>
+  <div id="album"></div>
+
+  <a href="amor1.html" class="volver">← Volver</a>
+</div>
+
+<script>
+  // Cargar recuerdos guardados
+  let recuerdos = JSON.parse(localStorage.getItem('recuerdos')) || [];
+  mostrarAlbum();
+
+  // Vista previa de la foto
+  let fotoBase64 = "";
+  function verFoto(input) {
+    if (input.files && input.files[0]) {
+      const lector = new FileReader();
+      lector.onload = e => {
+        fotoBase64 = e.target.result;
+        document.getElementById('img-preview').src = fotoBase64;
+        document.getElementById('vista-previa').classList.add('activa');
+      };
+      lector.readAsDataURL(input.files[0]);
+    }
+  }
+
+  // Agregar recuerdo al álbum
+  function agregarRecuerdo() {
+    if (!fotoBase64) { alert('⚠️ Primero elige una foto'); return; }
+    const fecha = document.getElementById('fecha').value;
+    const lugar = document.getElementById('lugar').value.trim();
+    const desc = document.getElementById('descripcion').value.trim();
+    
+    if (!fecha || !lugar || !desc) { alert('⚠️ Completa todos los campos'); return; }
+
+    recuerdos.unshift({foto: fotoBase64, fecha, lugar, desc});
+    localStorage.setItem('recuerdos', JSON.stringify(recuerdos));
+    
+    // Limpiar formulario
+    fotoBase64 = "";
+    document.getElementById('foto-recuerdo').value = "";
+    document.getElementById('fecha').value = "";
+    document.getElementById('lugar').value = "";
+    document.getElementById('descripcion').value = "";
+    document.getElementById('vista-previa').classList.remove('activa');
+
+    mostrarAlbum();
+    alert('💕 ¡Recuerdo guardado en el álbum! 💕');
+  }
+
+  // Mostrar todo el álbum
+  function mostrarAlbum() {
+    const contenedor = document.getElementById('album');
+    contenedor.innerHTML = "";
+    recuerdos.forEach(r => {
+      contenedor.innerHTML += `
+        <div class="recuerdo">
+          <img src="${r.foto}" alt="Recuerdo">
+          <div class="dato"><span class="etiqueta">📅 Fecha:</span> ${r.fecha}</div>
+          <div class="dato"><span class="etiqueta">📍 Lugar:</span> ${r.lugar}</div>
+          <div class="dato"><span class="etiqueta">💌:</span> ${r.desc}</div>
+        </div>
+      `;
+    });
+  }
+</script>
+
+</body>
+</html>
