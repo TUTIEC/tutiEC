@@ -3,39 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amor ❤️</title>
+  <title>❤️ Corazón</title>
   <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
     body {
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
-      margin: 0;
-      font-family: sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
     }
-    .boton-amor {
-      padding: 20px 50px;
-      font-size: 24px;
-      font-weight: bold;
-      color: white;
-      background: #e74c3c;
-      border: none;
-      border-radius: 50px;
+    .corazon {
+      font-size: 120px;
       cursor: pointer;
-      box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
-      transition: transform 0.3s;
+      transition: transform 0.3s ease;
+      filter: drop-shadow(0 6px 15px rgba(220, 50, 80, 0.4));
     }
-    .boton-amor:hover {
-      transform: scale(1.1);
+    .corazon:hover {
+      transform: scale(1.2);
     }
   </style>
 </head>
 <body>
 
-<button class="boton-amor" onclick="alert('❤️ ¡Tú también! ❤️')">
-  💖 Amor 💖
-</button>
+<a href="amor.html" class="corazon">❤️</a>
 
 </body>
 </html>

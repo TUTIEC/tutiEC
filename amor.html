@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💕 Galería de Amor — 12 Fotos</title>
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      min-height: 100vh;
+      /* ✅ TU IMAGEN DE FONDO — CAMBIA EL NOMBRE ABAJO */
+      background: url("11.jpg") no-repeat center center fixed;
+      background-size: cover;
+      font-family: sans-serif;
+      padding: 30px 20px;
+    }
+    h1 {
+      text-align: center;
+      color: white;
+      font-size: 28px;
+      margin-bottom: 30px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    /* === GALERÍA === */
+    .galeria {
+      max-width: 420px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      background: white;
+    }
+
+    .pantalla {
+      display: flex;
+      transition: transform 0.4s ease;
+      touch-action: pan-y;
+    }
+
+    .foto {
+      min-width: 100%;
+      aspect-ratio: 1 / 1; /* ⬜ FORMATO CUADRADO */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+    }
+
+    .foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* === BOTONES DE NAVEGACIÓN === */
+    .btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.9);
+      border: none;
+      font-size: 22px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      cursor: pointer;
+      color: #e74c3c;
+      font-weight: bold;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+    .btn-izq { left: 10px; }
+    .btn-der { right: 10px; }
+    .btn:hover { background: white; }
+
+    /* === PUNTITOS === */
+    .puntos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .punto {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      border: none;
+      cursor: pointer;
+    }
+    .punto.activo {
+      background: white;
+      box-shadow: 0 0 6px white;
+    }
+
+    /* === BOTÓN SABES === */
+    .boton-sabes {
+      display: block;
+      width: fit-content;
+      margin: 30px auto 0;
+      padding: 16px 45px;
+      background: linear-gradient(135deg, #e74c3c, #ff6b6b);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+      transition: transform 0.3s;
+      text-decoration: none;
+    }
+    .boton-sabes:hover {
+      transform: scale(1.08);
+    }
+
+    .volver {
+      display: block;
+      width: fit-content;
+      margin: 25px auto 0;
+      padding: 12px 30px;
+      background: white;
+      color: #e74c3c;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+
+<h1>💕 RECUERDAAAAA AMORR  💕</h1>
+
+<div class="galeria">
+  <div class="pantalla" id="pantalla">
+
+    <!-- 📸 FOTO 1 -->
+    <div class="foto">
+      <img src="14.jpg" alt="Recuerdo 1">
+    </div>
+
+    <!-- 📸 FOTO 2 -->
+    <div class="foto">
+      <img src="15.jpg" alt="Recuerdo 2">
+    </div>
+
+    <!-- 📸 FOTO 3 -->
+    <div class="foto">
+      <img src="16.jpg" alt="Recuerdo 3">
+    </div>
+
+    <!-- 📸 FOTO 4 -->
+    <div class="foto">
+      <img src="17.jpg" alt="Recuerdo 4">
+    </div>
+
+    <!-- 📸 FOTO 5 -->
+    <div class="foto">
+      <img src="18.jpg" alt="Recuerdo 5">
+    </div>
+
+    <!-- 📸 FOTO 6 -->
+    <div class="foto">
+      <img src="19.jpg" alt="Recuerdo 6">
+    </div>
+
+    <!-- 📸 FOTO 7 -->
+    <div class="foto">
+      <img src="20.jpg" alt="Recuerdo 7">
+    </div>
+
+    <!-- 📸 FOTO 8 -->
+    <div class="foto">
+      <img src="21.jpg" alt="Recuerdo 8">
+    </div>
+
+    <!-- 📸 FOTO 9 -->
+    <div class="foto">
+      <img src="22.jpg" alt="Recuerdo 9">
+    </div>
+
+    <!-- 📸 FOTO 10 -->
+    <div class="foto">
+      <img src="23.jpg" alt="Recuerdo 10">
+    </div>
+
+    <!-- 📸 FOTO 11 -->
+    <div class="foto">
+      <img src="24.jpg" alt="Recuerdo 11">
+    </div>
+
+    <!-- 📸 FOTO 12 -->
+    <div class="foto">
+      <img src="foto12.jpg" alt="Recuerdo 12">
+    </div>
+
+  </div>
+
+  <button class="btn btn-izq" onclick="anterior()">&#10094;</button>
+  <button class="btn btn-der" onclick="siguiente()">&#10095;</button>
+</div>
+
+<!-- Puntitos de navegación -->
+<div class="puntos" id="puntos">
+  <button class="punto activo" onclick="irA(0)"></button>
+  <button class="punto" onclick="irA(1)"></button>
+  <button class="punto" onclick="irA(2)"></button>
+  <button class="punto" onclick="irA(3)"></button>
+  <button class="punto" onclick="irA(4)"></button>
+  <button class="punto" onclick="irA(5)"></button>
+  <button class="punto" onclick="irA(6)"></button>
+  <button class="punto" onclick="irA(7)"></button>
+  <button class="punto" onclick="irA(8)"></button>
+  <button class="punto" onclick="irA(9)"></button>
+  <button class="punto" onclick="irA(10)"></button>
+  <button class="punto" onclick="irA(11)"></button>
+</div>
+
+<!-- 💖 BOTÓN SABES → TE LLEVA A amor1.html -->
+<a href="amor1.html" class="boton-sabes">💖 SABES 💖</a>
+
+<a href="contenido.html" class="volver">← Volver</a>
+
+<script>
+  let indice = 0;
+  const total = 12;
+  const pantalla = document.getElementById('pantalla');
+  const puntos = document.querySelectorAll('.punto');
+
+  function actualizar() {
+    pantalla.style.transform = `translateX(${-indice * 100}%)`;
+    puntos.forEach((p, i) => p.classList.toggle('activo', i === indice));
+  }
+
+  function siguiente() {
+    indice = (indice + 1) % total;
+    actualizar();
+  }
+
+  function anterior() {
+    indice = (indice - 1 + total) % total;
+    actualizar();
+  }
+
+  function irA(n) {
+    indice = n;
+    actualizar();
+  }
+
+  // ✅ DESLIZAR CON EL DEDO
+  let xInicio = 0;
+  pantalla.addEventListener('touchstart', e => {
+    xInicio = e.touches[0].clientX;
+  });
+  pantalla.addEventListener('touchend', e => {
+    const xFin = e.changedTouches[0].clientX;
+    const diferencia = xInicio - xFin;
+    if (diferencia > 50) siguiente();
+    if (diferencia < -50) anterior();
+  });
+</script>
+
+</body>
+</html>
